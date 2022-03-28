@@ -1,23 +1,40 @@
-import os,sys,time
+import sys
 
-phonebook_list = []
+contacts = []
 
-def main_menu():
-    
+def title_display():
+    print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+    print("^^^              PHONEBOOK MANAGER V1.0          ^^^")
+    print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+    name = input("\n\nEnter Your name: \n")
+    print(f"        Hello {name}, welcome to your phonebook    ")
+    proceed = input("\n\nPress Enter to access menu")
 
-def show_contacts():
+
+'''
+def menu_display():
     pass
 
+def main():
+    pass
+    
 def add_contact():
     pass
 
-def find_contact():
+def display_saved_contact():
     pass
 
+def search_contact():
+    pass
+    
 def delete_contact():
     pass
-
-def erase_all_contact():
+    
+def reset_phonebook():
     pass
+    
+   
 
+main()
 
+'''

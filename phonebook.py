@@ -2,6 +2,7 @@ import sys
 
 contacts = []
 
+
 def title():
     print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
     print("$$$$                                            $$$$")
@@ -62,7 +63,7 @@ def option_menu():
         print("                     =========================")
         print("Press Enter to Exit")
         input()
-        sys.exit(" Thank you for using the program")
+        sys.exit("**** THANK YOU FOR YOUR TIME ***")
     else:
         print("Invalid option selected, RETRY!!!")
         print("Press enter to Return to Menu")
@@ -70,39 +71,51 @@ def option_menu():
         option_menu()
 
 
-option_menu()
-
-
 def add_contact():
     global contacts
-    fname = input("Enter first name: ")
+    fname = input("\n\nEnter first name: ")
     fname.title()
     lname = input("Enter last name: ")
     lname.title()
     phone = int(input("Enter Phone#: "))
     email = input("Enter email address: ")   
-    details = [(f"{fname} {lname} | {phone} | {email}""\n")]
+    details = (f"{fname} {lname} | {phone} | {email}")
     contacts.append(details)
-    file = open("phonebook.txt", "a")
-    file.write(details)
-    file.close
-    print("Contact added to Phonebook")
-    print("Press enter to return to Menu")
+    print("\n\nContact add successful")
+    print("\nPress enter to return to Menu""\n")
+    input()
     option_menu()
 
 
+def display_saved_contact():
+    global contacts
+    if len(contacts) == 0:
+        print("\n\n=====(( Oops!!! Nothing to display ))=====")
+        print("Press Enter to return to Menu")
+        input()
+        option_menu()
+    else:
+        print(contacts)
+        print("Press Enter to return to Menu")
+        input()
+        option_menu()
 
-#def display_saved_contact():
-   # pass
+
+option_menu()
+
+
+display_saved_contact()
 
 
 #def search_contact():
-   # pass
+# pass
 
 
 #def delete_contact():
-  #  pass
+#  pass
 
 
 #def reset_phonebook():
-   # pass
+# pass
+
+

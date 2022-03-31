@@ -1,27 +1,28 @@
 import sys
 
-contacts = []
+contacts = {}
+
+directory_file = open("phonebook.txt", "r")
+directory_file.close()
 
 
 def title():
-    print("\n             $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-    print("             $$$$                                            $$$$")
-    print("             $$$$           PHONEBOOK MANAGER V1.0           $$$$")
-    print("             $$$$                                            $$$$")
-    print("             $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-    name = input("                       \nEnter your name: ")
-    print("                ---------------------------------------------")
-    print(f"                   Hello {name}, welcome to your phonebook  ")
-    print("                ---------------------------------------------")
-    print("\n                    <<<<<< Press Enter to access menu >>>>>    ")
+    print("""\n
+              $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+            $$$$                                       $$$$
+        $$$$           PHONEBOOK MANAGER V1.0              $$$$
+            $$$$                                       $$$$
+              $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        """)
+    name = input("           \nEnter your name: ")
+    print("      ---------------------------------------------")
+    print(f"        Hello {name}, welcome to your phonebook  ")
+    print("      ---------------------------------------------")
+    print("\n       <<< Press Enter to access menu >>>    ")
     input()
 
 
 title()
-
-
-directory_file = open("phonebook.txt", "r")
-directory_file.close
 
 
 def option_menu():
@@ -37,37 +38,38 @@ def option_menu():
     print("     6: Exit app ""\n")
     option = input("Select option: ")
     if option == "1":
-        print("                     =========================")
-        print("                   <<<<<<<< ADD CONTACT >>>>>>>>       ")
-        print("                     =========================""\n")      
+        print("    =========================")
+        print("    <<      Add Contact    >>")
+        print("    =========================""\n")
         add_contact()
     elif option == "2":
-        print("                     =========================")
-        print("                  <<<<<<<< VIEW CONTACT(S) >>>>>>>>  ")
-        print("                     =========================""\n")
+        print("    =========================")
+        print("    <<    View Contact(s)  >>  ")
+        print("    =========================""\n")
         display_saved_contact()
     elif option == "3":
-        print("                     =========================")
-        print("                 <<<<<<<< SEARCH CONTACT >>>>>>>>  ")
-        print("                     =========================""\n")
+        print("     =========================")
+        print("     <<    Search Contact   >>")
+        print("     =========================""\n")
         search_contact()
     elif option == "4":
-        print("                     =========================")
-        print("                   <<<<<<<< DELETE CONTACT >>>>>>>>  ")
-        print("                     =========================""\n")
+        print("     =========================")
+        print("     <<    Delete Contact   >>")
+        print("     =========================""\n")
         delete_contact()
     elif option == "5":
-        print("                     =========================")
-        print("                 <<<<<<<< RESET PHONEBOOK >>>>>>>>  ")
-        print("                     =========================""\n")
+        print("     =========================")
+        print("     <<   Reset Phonebook   >>")
+        print("     =========================""\n")
         reset_phonebook()
     elif option == "6":
-        print("                     =========================")
-        print("                   <<<<<<< EXIT PROGRAM >>>>>>>   ")
-        print("                     =========================""\n")
+        print("     =========================")
+        print("     <<     Exit program    >>")
+        print("     =========================""\n")
         print("Press Enter to Exit")
         input()
-        sys.exit("**** THANK YOU FOR YOUR TIME ***")
+        sys.exit(" **** Thank you for your time ***")
+        title()
     else:
         print("Invalid option selected, RETRY!!!")
         print("Press enter to Return to Menu")
@@ -76,28 +78,15 @@ def option_menu():
 
 
 def add_contact():
-    global contacts
-    fname = input("\n\nEnter first name: ")
-    lname = input("Enter last name: ")    
-    email = input("Enter email address: ")
-    if str("@") not in email and str(".") not in email:
-        print("Enter correct email")
-        add_contact()        
-    phone = int(input("Enter Phone #: "))
-    if type(phone) != int:
-        print("Please enter a number")
-    elif len(str(phone)) < 10 and len(str(phone)) > 10:
-        print("Number should not be less or greater than 10 digit")
-        add_contact()
-    details = f"\nfname:{fname}\nlname:{lname}\nphone#:{phone}\nEmail:{email}"
-    contacts.append(details)
+    contacts['first_name'] = input("Enter first name: ")
+    contacts['last_name'] = input("Enter Last name: ")
+    contacts['e_mail'] = input("Enter Email: ")
+    contacts['phone'] = int(input("Enter phone #: "))
     directory_file = open("phonebook.txt", "a")
-    directory_file.write(details)
+    directory_file.write(str(contacts))
     directory_file.write('\n')
     directory_file.close()
-
-    
-    print("\n"              "*** ADD CONTACT SUCCESSFUL ***""\n")
+    print("\n""  *** Contact add successful ***""\n")
     print("\nPress enter to return to Menu""\n")
     input()
     option_menu()
@@ -105,41 +94,75 @@ def add_contact():
 
 def display_saved_contact():
     global contacts
-    if len(contacts) == 0:
-        print("\n                    Oops!!! Nothing to display")
-        print("\n                  Press Enter to return to Menu")
+    global directory_file
+    if len(str(contacts)) == 0:
+        print("\n   Oops! nothing to display")
+        print("\n   Press Enter to return to Menu")
         input()
         option_menu()
     else:
-        directory_file = open("phonebook.txt", "r")
-        contacts = directory_file.read()
-        print(*contacts)
-        directory_file.close
-        print("\nPress Enter to return to Menu")
-        input()
-        option_menu()
+        with open("phonebook.txt") as directory_file:
+            for content in directory_file:
+                print(content)      
+                print("\nPress Enter to return to Menu")
+                input()
+                option_menu()
 
 
 def search_contact():
     """find a specific contact in phone directory"""
-    find_contact = input("search directory: ")
-    directory_file = open("phonebook.txt", "r")
-    contacts = directory_file.read()
-    if find_contact in contacts:
-        print(f" {find_contact}  is in  the phonebook")
+    global contacts
+    global directory_file   
+    
+    
+    find_contact = input("Search Phonebook: ")
+    with open("phonebook.txt") as directory_file:
+        for content in directory_file:
+            print(content)
+    new_content = []
+    line_index = 0
+    for contact in contacts:
+        if find_contact in contact:
+            new_content.insert(line_index, contact)
+            line_index += 1
+    directory_file.close()    
+    if len(new_content) == 0:
+        print(f"\n{find_contact} is not found in phonebook!")
+    else:
+        contactLen = len(new_content)
+        print("@" * 40)
+        print(f"\n**** Lines containing {find_contact}****\n")
+        print("@" * 40)
+        for i in range(contactLen):
+            print(end=new_content[i])
+            print("Press enter to return to Menu")
+            option_menu()
+
+
+def delete_contact():
+    pass
+
+
+def reset_phonebook():
+    global directory_file
+    print("This will erase all contacts from the phonebook")
+    answer = input("Press y/n to continue: ")
+    if answer == "y":
+        directory_file = open("phonebook.txt", "w")
+        directory_file.close()
+        print("All Contact(s) deleted")
+        print("Press enter to return to Menu")
+        input()
+        option_menu()
+    elif answer == "n":
         print("Press enter to return to Menu")
         input()
         option_menu()
     else:
-        print(f" No record of {find_contact} in directory")
         print("Press enter to return to Menu")
         input()
         option_menu()
-  
 
-
-#def delete_contact():
-     
 
 option_menu()
 
@@ -150,5 +173,4 @@ display_saved_contact()
 search_contact()
 
 
-#def reset_phonebook():
-# pass
+reset_phonebook()

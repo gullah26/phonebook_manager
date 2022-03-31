@@ -1,10 +1,7 @@
 import sys
 
-contacts = {}
 
-directory_file = open("phonebook.txt", "r")
-directory_file.close()
-
+phone_directory = {} 
 
 def title():
     print("""\n
@@ -15,6 +12,7 @@ def title():
               $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
         """)
     name = input("           \nEnter your name: ")
+    
     print("      ---------------------------------------------")
     print(f"        Hello {name}, welcome to your phonebook  ")
     print("      ---------------------------------------------")
@@ -77,15 +75,15 @@ def option_menu():
         option_menu()
 
 
-def add_contact():
-    contacts['first_name'] = input("Enter first name: ")
-    contacts['last_name'] = input("Enter Last name: ")
-    contacts['e_mail'] = input("Enter Email: ")
-    contacts['phone'] = int(input("Enter phone #: "))
-    directory_file = open("phonebook.txt", "a")
-    directory_file.write(str(contacts))
+def add_contact():           
+    phone_directory['first_name'] = input("Enter first name: ")
+    phone_directory['last_name'] = input("Enter last name: ")
+    phone_directory['e_mail'] = input("Enter email: ")
+    phone_directory['phone'] = int(input("Enter phone #: "))
+    directory_file = open("directory.txt", "a")
+    directory_file.write(str(phone_directory))
     directory_file.write('\n')
-    directory_file.close()
+    directory_file.close()            
     print("\n""  *** Contact add successful ***""\n")
     print("\nPress enter to return to Menu""\n")
     input()
@@ -93,17 +91,22 @@ def add_contact():
 
 
 def display_saved_contact():
-    global contacts
-    global directory_file
-    if len(str(contacts)) == 0:
+    global phone_directory
+    if len(str(phone_directory)) == 0:
         print("\n   Oops! nothing to display")
         print("\n   Press Enter to return to Menu")
         input()
         option_menu()
     else:
-        with open("phonebook.txt") as directory_file:
-            for content in directory_file:
-                print(content)      
+        with open("directory.txt") as directory_file:
+            phone_directory = directory_file.readlines()
+            line = 0
+            for contact in phone_directory:
+                line += 1
+                print(f"content {line}: {contact}") 
+        # with open("phonebook.txt") as directory_file:
+        #     for content in directory_file:
+        #         print(content)      
                 print("\nPress Enter to return to Menu")
                 input()
                 option_menu()
@@ -111,41 +114,47 @@ def display_saved_contact():
 
 def search_contact():
     """find a specific contact in phone directory"""
-    global contacts
-    global directory_file   
-    
-    
-    find_contact = input("Search Phonebook: ")
-    with open("phonebook.txt") as directory_file:
-        for content in directory_file:
-            print(content)
-    new_content = []
-    line_index = 0
-    for contact in contacts:
-        if find_contact in contact:
-            new_content.insert(line_index, contact)
-            line_index += 1
-    directory_file.close()    
-    if len(new_content) == 0:
-        print(f"\n{find_contact} is not found in phonebook!")
-    else:
-        contactLen = len(new_content)
-        print("@" * 40)
-        print(f"\n**** Lines containing {find_contact}****\n")
-        print("@" * 40)
-        for i in range(contactLen):
-            print(end=new_content[i])
-            print("Press enter to return to Menu")
-            option_menu()
+    global phone_directory
+    global directory_file    
+    find_contact = input("Search directory: ")
+    with open("directory.txt") as directory_file:
+        phone_directory = directory_file.readlines()
+        for find_contact in phone_directory:
+            print(find_contact)
+    # new_content = []
+    # line_index = 0
+    # for contact in phone_directory:
+    #     if find_contact in contact:
+    #         new_content.insert(line_index, contact)
+    #         line_index += 1
+    # directory_file.close()    
+    # if len(new_content) == 0:
+    #     print(f"\n{find_contact} is not found in phonebook!")
+    # else:
+    #     contactLen = len(new_content)
+    #     print("@" * 40)
+    #     print(f"\n**** Lines containing {find_contact}****\n")
+    #     print("@" * 40)
+    #     for i in range(contactLen):
+    #         print(end=new_content[i])
+        print("Press enter to return to Menu")
+        option_menu()
 
 
 def delete_contact():
-    pass
+    to_delete = input("contact to delete: ")
+    with open("directory.txt") as directory_file:
+        lines = directory_file.readlines()
+    with open("directory.txt", "w") as content:
+        for line in lines:
+            if to_delete in line:
+                continue
+            content.write(line, "\n")
 
 
 def reset_phonebook():
     global directory_file
-    print("This will erase all contacts from the phonebook")
+    print("This will erase all phone_directory from the phonebook")
     answer = input("Press y/n to continue: ")
     if answer == "y":
         directory_file = open("phonebook.txt", "w")

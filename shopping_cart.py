@@ -76,27 +76,29 @@ def dash_board():
 
 # function to Add items to the shopping cart
 def add_item():
-    print("    =========================")
-    print("    <<   Add item to cart  >>  ")
-    print("    =========================""\n")
     item = input("Add item to cart: ")
     myCart.append(item)
-    print(f"______{item} added to cart______")
+    print(f"\n____{item} added to cart____""\n")
 
 
 # displays the list of items in the cart
 def view_cart():
-    print("    =========================")
-    print("    <<      View cart      >>  ")
-    print("    =========================""\n")
     line = 0
     for item in myCart:
         line += 1
         if len(myCart) != 0:
             print(f"Item {line}: {item}")
-        else:
-            print("\n  Cart is empty")
-            print("\n  Please add item")
+            break
+    else:
+        print("\n____!!!You have nothing in your cart____""\n")
+
+
+def search_item():
+    item = input("Find item in cart: ")
+    if item in myCart:
+        print(f"____{item} is in cart____""\n")
+    else:
+        print(f"____{item} is not in cart____""\n")
 
 
 dash_board()

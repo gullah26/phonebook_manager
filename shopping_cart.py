@@ -79,6 +79,8 @@ def add_item():
     item = input("Add item to cart: ")
     myCart.append(item)
     print(f"\n____{item} added to cart____""\n")
+    print("Press Enter to return to Menu")
+    input(".......")
 
 
 # displays the list of items in the cart
@@ -88,17 +90,48 @@ def view_cart():
         line += 1
         if len(myCart) != 0:
             print(f"Item {line}: {item}")
+            print("Press Enter to return to Menu")
+            input(".......")
             break
     else:
         print("\n____!!!You have nothing in your cart____""\n")
+        print("Try again")
+        print("Press Enter to return to Menu")
+        input(".......")
 
 
+# Find item in the cart based on user input
 def search_item():
     item = input("Find item in cart: ")
     if item in myCart:
-        print(f"____{item} is in cart____""\n")
+        print(f"\n____{item} is in cart____""\n")
+        print("Press Enter to return to Menu")
+        input(".......")
     else:
         print(f"____{item} is not in cart____""\n")
+        print("Press Enter to return to Menu")
+        input(".......")
+
+
+# Finds and delete an item from the cart based on user input
+def delete_item():
+    item = input("Find item to delete from cart: ")
+    if item in myCart:
+        myCart.remove(item)
+        print(f"____{item} deleted from cart____""\n")
+        print("Press Enter to return to Menu")
+        input(".......")
+    else:
+        print(f"____{item} not found in cart____""\n")
+        print("Press Enter to try again")
+        input(".......")
+        delete_item()
+
+
+# Empty the cart 
+def empty_cart():
+    
+
 
 
 dash_board()

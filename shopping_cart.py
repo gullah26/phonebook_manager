@@ -5,7 +5,7 @@ import sys  # module exit the program when called
 def title():
     print("\n                        $$$$$$$$$$$$$")
     print("                                 $$$$")
-    print("          SHOPPING CART  V1.0    $$$$")
+    print("          Shopping Cart  V1.0    $$$$")
     print("                                 $$$$")
     print("         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
 
@@ -19,8 +19,11 @@ print("      ---------------------------------------------")
 print("\n       <<< Press Enter to access menu >>>    ")
 input("...")
 
+myCart = []
+
+
 # funtion that returns the user to the menu
-def dashBoard():
+def dash_board():
     while True:
         print("    <<<<<<<< OPTION MENU >>>>>>>>   ")
         print("    ****************************")
@@ -69,9 +72,31 @@ def dashBoard():
             print("Invalid option selected, RETRY!!!")
             print("Press enter to Return to Menu")
             input()
-            
 
 
-dashBoard()
+# function to Add items to the shopping cart
+def add_item():
+    print("    =========================")
+    print("    <<   Add item to cart  >>  ")
+    print("    =========================""\n")
+    item = input("Add item to cart: ")
+    myCart.append(item)
+    print(f"______{item} added to cart______")
 
 
+# displays the list of items in the cart
+def view_cart():
+    print("    =========================")
+    print("    <<      View cart      >>  ")
+    print("    =========================""\n")
+    line = 0
+    for item in myCart:
+        line += 1
+        if len(myCart) != 0:
+            print(f"Item {line}: {item}")
+        else:
+            print("\n  Cart is empty")
+            print("\n  Please add item")
+
+
+dash_board()

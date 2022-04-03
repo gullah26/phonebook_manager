@@ -1,13 +1,14 @@
-import sys  # module exit the program when called
+"""module exit the program when called"""
+import sys
 
 
 # create a title function
 def title():
-    print("\n                        $$$$$$$$$$$$$")
-    print("                                 $$$$")
-    print("          Shopping Cart  V1.0    $$$$")
-    print("                                 $$$$")
-    print("         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+    print("""\n                         $$$$$$$$$$$$$""")
+    print("""                                 $$$$""")
+    print("""        Shopping Cart  V1.0     $$$$""")
+    print("""                               $$$$""")
+    print("""       $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$""")
 
 
 title()
@@ -25,10 +26,10 @@ myCart = []
 # funtion that returns the user to the menu
 def dash_board():
     while True:
-        print("    <<<<<<<< OPTION MENU >>>>>>>>   ")
-        print("    ****************************")
-        print("    Press 1 - 6 to select option")
-        print("    ****************************")
+        print("""  <<<<<<<< OPTION MENU >>>>>>>> """)
+        print("""  ****************************""")
+        print("""  Press 1 - 6 to select option""")
+        print("""  ****************************""")
         print("     1: Add item")
         print("     2: View cart")
         print("     3: Search item")
@@ -37,32 +38,32 @@ def dash_board():
         print("     6: Exit app ""\n")
         option = input("Select option: ")
         if option == "1":
-            print("    =========================")
+            print("\n    =========================")
             print("    <<  Add item to Cart  >>")
             print("    =========================""\n")
             add_item()
         elif option == "2":
-            print("    =========================")
+            print("\n    =========================")
             print("    <<      View cart    >>  ")
             print("    =========================""\n")
             view_cart()
         elif option == "3":
-            print("     =========================")
+            print("\n     =========================")
             print("     <<    Search item   >>")
             print("     =========================""\n")
             search_item()
         elif option == "4":
-            print("     =========================")
+            print("\n     =========================")
             print("     <<       Delete item   >>")
             print("     =========================""\n")
             delete_item()
         elif option == "5":
-            print("     =========================")
+            print("\n     =========================")
             print("     <<      Empty cart     >>")
             print("     =========================""\n")
             empty_cart()
         elif option == "6":
-            print("     =========================")
+            print("\n     =========================")
             print("     <<     Exit program    >>")
             print("     =========================""\n")
             print("Press Enter to Exit")
@@ -76,27 +77,24 @@ def dash_board():
 
 # function to Add items to the shopping cart
 def add_item():
-    item = input("Add item to cart: ")
-    myCart.append(item)
-    print(f"\n____{item} added to cart____""\n")
-    print("Press Enter to return to Menu")
+    item = input("\nAdd item to cart: ")
+    myCart.append(item.title())
+    print()
+    print(f"____{item} added to cart____""\n")
+    print("\nPress Enter to return to Menu")
     input(".......")
 
 
 # displays the list of items in the cart
 def view_cart():
-    line = 0
+    print()
+    print(f"   Total item(s) in your cart is : {len(myCart)} ""\n")
     for item in myCart:
-        line += 1
-        if len(myCart) != 0:
-            print(f"Item {line}: {item}")
-            print("Press Enter to return to Menu")
-            input(".......")
-            break
+        print(item)
+        break
     else:
-        print("\n____!!!You have nothing in your cart____""\n")
-        print("Try again")
-        print("Press Enter to return to Menu")
+        print("\n____!!!Your shopping cart is empty____""\n")
+        print("\nPress Enter to return to Menu")
         input(".......")
 
 
@@ -104,12 +102,14 @@ def view_cart():
 def search_item():
     item = input("Find item in cart: ")
     if item in myCart:
-        print(f"\n____{item} is in cart____""\n")
-        print("Press Enter to return to Menu")
+        print()
+        print(f"____{item} is in cart____""\n")
+        print("\nPress Enter to return to Menu")
         input(".......")
+        dash_board()
     else:
         print(f"____{item} is not in cart____""\n")
-        print("Press Enter to return to Menu")
+        print("\nPress Enter to return to menu")
         input(".......")
 
 
@@ -118,20 +118,32 @@ def delete_item():
     item = input("Find item to delete from cart: ")
     if item in myCart:
         myCart.remove(item)
-        print(f"____{item} deleted from cart____""\n")
-        print("Press Enter to return to Menu")
+        print(f"\n____{item} deleted from cart____""\n")
+        print("\nPress Enter to return to Menu")
         input(".......")
+        dash_board()
     else:
-        print(f"____{item} not found in cart____""\n")
-        print("Press Enter to try again")
+        print("\n____No Item deleted____""\n")
+        print("\nPress Enter to try again")
         input(".......")
-        delete_item()
 
 
-# Empty the cart 
+# Empty the cart
 def empty_cart():
-    
-
+    print("\nThis will erase all items in the cart")
+    answer = input("\nPress y to erase cart or n to return to menu: ")
+    if answer == "y":
+        print("\n____All item(s) in cart deleted____""\n")
+        print("Press enter to return to Menu")
+        input(".......")
+        dash_board()
+    elif answer == "n":
+        print("Press enter to return to Menu")
+        dash_board()
+    else:
+        print("\nPress enter to return to Menu")
+        input("........")
+        dash_board()
 
 
 dash_board()

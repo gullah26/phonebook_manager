@@ -1,4 +1,0 @@
-{'first_name': 'seun', 'last_name': 'olu', 'e_mail': 'aye@aol.com', 'phone': 34456776}
-{'first_name': 'Seun', 'last_name': 'Sola', 'e_mail': 'test@test.com', 'phone': 1234567890}
-{'first_name': 'tutor', 'last_name': 'man', 'e_mail': 'tutor@test.com', 'phone': 5555555}
-{'first_name': 'yolo', 'last_name': 'yala', 'e_mail': 'yili@zolo.com', 'phone': 399588686}

@@ -4,14 +4,12 @@ import sys
 
 # The program title
 def app_name():
-    """
-    This is the title of the program
-    """
-    print("""\n                           $$$$$$$$$$$$$""")
-    print("""                                     $$$""")
-    print("""               Shopping Cart  V1.0   $$$""")
-    print("""                                     $$$""")
-    print("""       $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$""")
+
+    print("""\n                               %%%%%%%%%%%%%""")
+    print("""                                         %%%""")
+    print("""               Shopping Cart  V1.0       %%%""")
+    print("""                                         %%%""")
+    print("""       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%""")
 
 
 # welcome message that greets the user
@@ -26,11 +24,11 @@ def greeting():
             print("\n** Please enter a valid input **\n")
             continue
         else:
-            print("\n    =-----------------------------------------------=")
+            print("\n      =-----------------------------------------------=")
             print(f"      Hello {name}, welcome to your shopping cart v1.0")
             print("      =-----------------------------------------------=")
             print("\n    ")
-            input("\n       <<< Press Enter to access menu >>>    ")
+            input("\n       <<< Press Enter to access menu >>>")
             break
 
 
@@ -42,7 +40,7 @@ new_cart = []
 # This is the main menu where user can pick a selection to execute a task
 def dash_board():
     while True:
-        print("""   <<<<<<<< OPTION MENU >>>>>>>> """)
+        print("""   %%%%%% OPTION MENU %%%%%% """)
         print("""  """)
         print("""   Press 1 - 6 to select option""")
         print("""  """)
@@ -91,7 +89,7 @@ def dash_board():
             input("\nPress enter to return to Menu")
 
 
-# Takes user input , add and save to text file 
+# Takes user input , add and save to text file
 def add_item():
     while True:
         item_add = (
@@ -111,7 +109,7 @@ def add_item():
             input("\nPress enter to continue")
             break
         else:
-            print(f"\n## \"{item_add}\" added to cart ##""\n")
+            print(f"\n%%%%%% \"{item_add}\" added to cart %%%%%%""\n")
             input("\nPress enter to return to Menu")
             with open("cart_data.txt", "a", encoding='utf-8') as file:
                 my_cart.append(item_add + "\n")
@@ -128,7 +126,7 @@ def view_cart():
             for i, item in enumerate(my_cart, 1):
                 print(f"   item {i}: {item}", end="")
     else:
-        print("\n____!!!Your shopping cart is empty____""\n")
+        print("\n%%%%%% Your shopping cart is empty %%%%%%""\n")
     input("\nPress enter to return to Menu")
 
 
@@ -153,13 +151,13 @@ def find_item():
             print("\n### Enter a valid input ###\n")
             continue
         elif search_item + '\n' in my_cart:
-            print(f"\n$$$ \"{search_item}\" is in your cart $$$""\n")
+            print(f"\n%%%%%% \"{search_item}\" is in your cart %%%%%%""\n")
             input("\nPress Enter to continue")
             break
         elif not search_item:
             print("\n### Enter a valid input ###\n")
         else:
-            print(f"\n$$$ \"{search_item}\" is not in your cart $$$""\n")
+            print(f"\n%%%%%% \"{search_item}\" is not in your cart %%%%%%""\n")
             input("\nPress Enter to continue""\n")
             break
 
@@ -178,14 +176,14 @@ def delete_item():
             print("\n### Enter a valid input ###\n")
             continue
         elif not to_delete:
-            print("\n### Enter a valid input ###\n")
+            print("\n%%% Enter a valid input %%%\n")
         elif to_delete + '\n' not in my_cart:
-            print(f"\n## !!!Oops, \"{to_delete}\" is not in your cart ##")
+            print(f"\n%%%!!!Oops, \"{to_delete}\" is NOT in your cart %%%")
             input("\nPress enter to continue")
             break
         else:
             my_cart.remove(to_delete + '\n')
-            print(f"\n### \"{to_delete}\" deleted from your cart ###""\n")
+            print(f"\n%%%%%%\"{to_delete}\" deleted from your cart %%%%%%""\n")
             save_data()
             input("\nPress Enter to continue""\n")
             break
@@ -195,7 +193,7 @@ def delete_item():
 def empty_cart():
     while True:
         erase_all = (
-            input("\nEnter y to erase or n to return: ")
+            input("\n%%%%%% Press Enter to Empty cart %%%%%%")
             .strip()
         )
         if any(char.isdigit() for char in erase_all):
@@ -207,14 +205,14 @@ def empty_cart():
             print("\nPlease enter a valid input\n")
         elif len(my_cart) > 0:
             my_cart.clear()
-            print("\n###   Your shopping cart is now empty   ###""\n")
+            print("\n%%%%%% Your shopping cart is now empty %%%%%%""\n")
             save_data()
-            input("\nPress enter to return to Menu")
+            input("\nPress enter to return to Menu: ")
             dash_board()
             break
         else:
-            print("\n###    Nothing to Erase in cart    ###")
-            input("\nPress enter to return to Menu")
+            print("\n%%%%%%  Nothing  in cart to Erase in cart %%%%%%")
+            input("\nPress enter to return to Menu: ")
             dash_board()
         break
 
@@ -246,6 +244,4 @@ def main():
 
 
 main()
-
-
 

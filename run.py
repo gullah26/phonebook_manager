@@ -1,15 +1,21 @@
 import sys
 
 
+# The program title
+def app_title():
+    print("                       %%%%%%%%%")
+    print("                             %%%")
+    print("         Shopping Cart  V1.0 %%%")
+    print("                             %%%")
+    print("         %%%%%%%%%%%%%%%%%%%%%%%%%%%")
+
+
+app_title()
+
+
 # welcome message that greets the user
 def greeting():
     while True:
-        # The program title
-        print("                       %%%%%%%%%")
-        print("                             %%%")
-        print("         Shopping Cart  V1.0 %%%")
-        print("                             %%%")
-        print("         %%%%%%%%%%%%%%%%%%%%%%%")
         name = (input("\nEnter your name: ").title().strip())
         if any(char.isdigit() for char in name):
             print("\nInvalid input, letters only not numbers\n")
@@ -215,6 +221,7 @@ def exit_app():
 
 # main  will run the program again
 def main():
+    app_title()
     greeting()
     dash_board()
 

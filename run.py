@@ -1,4 +1,3 @@
-# module exit the program when called
 import sys
 
 

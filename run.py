@@ -124,6 +124,19 @@ def get_cart_data():
             my_cart.append(line)
 
 
+# Save data in "W" write mode overwrites and clear any existing data
+def save_data():
+    cart_list = new_cart + my_cart
+    with open("cart_data.txt", "w", encoding='utf-8') as data_file:
+        for x in cart_list:
+            if x != "\n":
+                data_file.write(x)
+
+    new_cart.clear()
+    my_cart.clear()
+    get_cart_data()
+
+
 # Find item in the cart based on user input and return a message
 def find_item():
     while True:
@@ -188,24 +201,10 @@ def empty_cart():
             input("\nPress enter to return to Menu:\n")
             option_menu()
             break
-        else:
-            print("\n%%%%  Nothing  in cart to Erase in cart %%%%")
-            input("\nPress enter to return to Menu:\n")
-            option_menu()
-            break
-
-
-# Save data in "W" write mode overwrites and clear any existing data
-def save_data():
-    cart_list = new_cart + my_cart
-    with open("cart_data.txt", "w", encoding='utf-8') as output_file:
-        for x in cart_list:
-            if x != "\n":
-                output_file.write(x)
-
-    new_cart.clear()
-    my_cart.clear()
-    get_cart_data()
+    else:
+        print("\n%%%%  Nothing  in cart to Erase in cart %%%%")
+        input("\nPress enter to return to Menu:\n")
+        option_menu()
 
 
 # This Exit function terminates  the program execution
@@ -220,12 +219,10 @@ def exit_app():
 
 
 # this funtion re-runs program
-def main():    
+def main():
     greeting()
     get_cart_data()
     option_menu()
 
 
 main()
-
-

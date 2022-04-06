@@ -8,13 +8,13 @@ new_cart = []
 
 def greeting():
     # The program title
-    print("\n                      %%%%%%%%%")
-    print("                            %%%")
-    print("        Shopping Cart  V1.0 %%%")
-    print("        %%%%%%%%%%%%%%%%%%%%%%%")
+    print("                       %%%%%%%%%")
+    print("                             %%%")
+    print("         Shopping Cart  V1.0 %%%")
+    print("                             %%%")
 # welcome message that greets the user
     while True:
-        name = (input("\nPlease Enter your name:\n").title().strip())
+        name = (input("\nEnter your name:\n").title().strip())
         if any(char.isdigit() for char in name):
             print("\nInvalid input, letters only not numbers\n")
         elif not name:
@@ -25,55 +25,55 @@ def greeting():
         else:
             print(f"\nHello {name}, welcome to your shopping cart v1.0")
             print("=-----------------------------------------------=")
-            input("\n<<< Press Enter to access menu:>>>\n")
+            print("\n    ")
+            input("\n<<< Press Enter to access menu: >>>\n")
             break
 
 
 # This is the main menu where user can pick a selection to execute a task
 def option_menu():
-    while True:
-        # user can select option between 1 to 6
-        print("%%%%%% OPTION MENU %%%%%%")
-        print("  ")
-        print("\nPress 1 - 6 to select option")
-        print("  ")
-        print("1: Add item")
-        print("2: View cart")
-        print("3: Find item")
-        print("4: Delete item")
-        print("5: Empty cart  ")
-        print("6: Exit app ""\n")
-        # User input to select an option
-        option = input("Select option:\n")
-        if option == "1":
-            print("<<  Add item to Cart  >>")
-            print("=========================""\n")
-            add_item()
-        elif option == "2":
-            print("   <<  View cart  >>")
-            print("=======================""\n")
-            view_cart()
-        elif option == "3":
-            print("  <<  Find item >>")
-            print("====================""\n")
-            find_item()
-        elif option == "4":
-            print(" <<  Delete item  >>")
-            print("======================""\n")
-            delete_item()
-        elif option == "5":
-            print("   <<  Empty cart >>")
-            print("======================""\n")
-            empty_cart()
-        elif option == "6":
-            print("  <<  Exit program >>")
-            print("=======================""\n")
-            exit_app()
-        elif not option:
-            print("** Invalid input please enter 1-6 **")
-            input("\nPress enter to return to Menu\n")
-        else:
-            print("** Invalid input please press enter")
+    # user can select option between 1 to 6
+    print("%%%%%% OPTION MENU %%%%%%")
+    print("  ")
+    print("Press 1 - 6 to select option")
+    print("  ")
+    print("1: Add item")
+    print("2: View cart")
+    print("3: Find item")
+    print("4: Delete item")
+    print("5: Empty cart  ")
+    print("6: Exit app ""\n")
+    # User input to select an option
+    option = input("Select option: ")
+    if option == "1":
+        print("<<  Add item to Cart  >>")
+        print("=========================""\n")
+        add_item()
+    elif option == "2":
+        print("   <<  View cart  >>")
+        print("=======================""\n")
+        view_cart()
+    elif option == "3":
+        print("  <<  Find item >>")
+        print("====================""\n")
+        find_item()
+    elif option == "4":
+        print(" <<  Delete item  >>")
+        print("======================""\n")
+        delete_item()
+    elif option == "5":
+        print("   <<  Empty cart >>")
+        print("======================""\n")
+        empty_cart()
+    elif option == "6":
+        print("  <<  Exit program >>")
+        print("=======================""\n")
+        exit_app()
+    elif not option:
+        print("** Invalid input please enter 1-6 **")
+        input("\nPress enter to return to Menu""\n")
+    else:
+        option_menu()
 
 
 # Takes user input , add and save to text file
@@ -99,27 +99,29 @@ def add_item():
         else:
             print(f"\n%%%%%% \"{item_add}\" added to cart %%%%%%""\n")
             input("\nPress enter to return to Menu\n")
-            my_cart.append(item_add + "\n")
-            save_data()
+            with open("cart_data.txt", "a", encoding='utf-8') as file:
+                my_cart.append(item_add + "\n")
+                file.write('\n'.join(my_cart))
             break
 
 
 # The content of the shopping cart is displayed by calling this function
 def view_cart():
-    print(f"\n   Total item(s) in your cart is : {len(my_cart)} ""\n")
+    print("\n")
+    print(f"   Total item(s) in your cart is : {len(my_cart)} ""\n")
     if len(my_cart) > 0:
-        with open("cart_data.txt", "r+", encoding='utf-8'):
+        with open("cart_data.txt", "r", encoding='utf-8'):
             for i, item in enumerate(my_cart, 1):
                 print(f"   item {i}: {item}", end="")
-            input("\nPress Enter to continue\n")
     else:
         print("\n%%%%%% Your shopping cart is empty %%%%%%""\n")
-        input("\nPress enter to return to Menu\n")
+        input("\nPress enter to return to Menu ")
+        option_menu()
 
 
 # This function opens the file to read from the saved data
 def get_cart_data():
-    with open("cart_data.txt", "r", encoding='utf-8') as my_list:
+    with open("cart_data.txt", "r+", encoding='utf-8') as my_list:
         for line in my_list:
             my_cart.append(line)
 
@@ -146,7 +148,7 @@ def find_item():
             print("\n### Enter a valid input ###\n")
         else:
             print(f"\n%%%%%% \"{search_item}\" is not in your cart %%%%%%""\n")
-            input("\nPress Enter to continue:\n")
+            input("\nPress Enter to continue: ""\n")
             break
 
 
@@ -154,7 +156,7 @@ def find_item():
 def delete_item():
     while True:
         to_delete = (
-            input("\nFind item to delete from cart:\n")
+            input("Find item to delete from cart:\n")
             .title()
             .strip()
             )
@@ -174,7 +176,7 @@ def delete_item():
             my_cart.remove(to_delete + "\n")
             print(f"\n%%%% \"{to_delete}\" deleted from your cart %%%%""\n")
             save_data()
-            input("\nPress Enter to continue:\n")
+            input("\nPress Enter to continue:\n""\n")
             break
 
 
@@ -210,22 +212,14 @@ def save_data():
 
 # This Exit function terminates  the program execution
 def exit_app():
-    choice = input("\nPress y to Exit and n to run program again \n")
-    if choice == "y":
-        sys.exit(" --( Thank you for your time =:)--")
-    elif choice == "n":
-        main()
-    else:
-        main()
+    input("Press Enter to Exit")
+    sys.exit(" --( Thank you for your time =:)--")
 
 
-# this funtion re-runs program
-def main():    
-    greeting()
-    get_cart_data()
-    option_menu()
+# main  will run the program again
+option_menu()
 
 
-main()
+
 
 

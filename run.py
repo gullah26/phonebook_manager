@@ -201,10 +201,11 @@ def empty_cart():
             input("\nPress enter to return to Menu:\n")
             option_menu()
             break
-    else:
-        print("\n%%%%  Nothing  in cart to Erase in cart %%%%")
-        input("\nPress enter to return to Menu:\n")
-        option_menu()
+        else:
+            print("\n%%%%  Shopping cart is already empty %%%%")
+            input("\nPress enter to return to Menu:\n")
+            option_menu()
+            break
 
 
 # This Exit function terminates  the program execution

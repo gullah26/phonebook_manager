@@ -1,6 +1,5 @@
 import sys
 
-
 # An empty list that will contain user input
 my_cart = []
 new_cart = []
@@ -102,7 +101,7 @@ def add_item():
             input("\nPress enter to continue\n")
             break
         else:
-            print(f"\n%%%%%% \"{item_add}\" was added to cart %%%%%%""\n")
+            print(f"\n \"{item_add}\" was added to cart\n")
             input("\nPress enter to return to Menu\n")
             my_cart.append(item_add + "\n")
             save_data()
@@ -117,7 +116,7 @@ def view_cart():
                 print(f"   item {i}: {item}", end="")
             input("\nPress Enter to continue\n")
     else:
-        print("\n%%%%%% Cart is empty, Try adding an item %%%%%%""\n")
+        print("\nCart is empty, Try adding an item\n")
         input("\nPress enter to return to Menu\n")
 
 
@@ -161,13 +160,13 @@ def find_item():
             print("\n### Enter a valid input ###\n")
             continue
         elif search_item + '\n' in my_cart:
-            print(f"\n%%%%%% \"{search_item}\" is in your cart %%%%%%""\n")
+            print(f"\n \"{search_item}\" is in your cart\n")
             input("\nPress Enter to continue:\n")
             break
         elif not search_item:
             print("\n### Enter a valid input ###\n")
         else:
-            print(f"\n%%%%%% \"{search_item}\" is not in your cart %%%%%%""\n")
+            print(f"\n \"{search_item}\" is not in your cart\n")
             input("\nPress Enter to continue:\n")
             break
 
@@ -187,14 +186,14 @@ def delete_item():
             print("\n### Enter a valid input ###\n")
             continue
         elif not to_delete:
-            print("\n%%% Enter a valid input %%%\n")
+            print("\nEnter a valid input\n")
         elif to_delete + '\n' not in my_cart:
-            print(f"\n%%%!!!Oops, \"{to_delete}\" is NOT in your cart %%%")
+            print(f"\n!!!Oops, \"{to_delete}\" is NOT in your cart")
             input("\nPress enter to continue:\n")
             break
         else:
             my_cart.remove(to_delete + "\n")
-            print(f"\n%%%% \"{to_delete}\" deleted from your cart %%%%""\n")
+            print(f"\n \"{to_delete}\" deleted from your cart\n")
             save_data()
             input("\nPress Enter to continue:\n")
             break
@@ -205,13 +204,13 @@ def empty_cart():
     while True:
         if len(my_cart) > 0:
             my_cart.clear()
-            print("\n%%%%%% Your shopping cart is now empty %%%%%%""\n")
+            print("\nYour shopping cart is now empty\n")
             save_data()
             input("\nPress enter to return to Menu:\n")
             option_menu()
             break
         else:
-            print("\n%%%%  Shopping cart is already empty %%%%")
+            print("\nShopping cart is already empty")
             input("\nPress enter to return to Menu:\n")
             option_menu()
             break

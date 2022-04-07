@@ -219,11 +219,7 @@ def empty_cart():
 
 # This Exit function terminates  the program execution
 def exit_app():
-    choice = input("\nPress y to run program again or n to Exit\n")
-    if choice == "y":
-        main()
-    else:
-        sys.exit(" --( Thank you for your time =:)--")
+    sys.exit(" --( Thank you for your time =:)--")
 
 
 # this funtion re-runs program

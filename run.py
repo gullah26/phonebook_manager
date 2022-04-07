@@ -1,4 +1,5 @@
 import sys
+from datetime import datetime
 
 # An empty list that will contain user input
 my_cart = []
@@ -6,24 +7,31 @@ new_cart = []
 
 
 def greeting():
-    # The program title
-    print("\n                      %%%%%%%%%")
-    print("                            %%%")
-    print("        Shopping Cart  V1.0 %%%")
-    print("        %%%%%%%%%%%%%%%%%%%%%%%")
-# welcome message that greets the user
+    this_hour = int(datetime.now().strftime('%H'))
+    # The program title logo
+    print("\n      %%%%%%%%%              %%%%%%%%%")
+    print("      %%%                          %%%")
+    print("      %%%    Shopping Cart  V1.0   %%%")
+    print("      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+# welcome message that greets the user based on time of the day
     while True:
         name = (input("\nPlease Enter your name:\n").title().strip())
         if any(char.isdigit() for char in name):
             print("\nInvalid input, letters only not numbers\n")
         elif not name:
             print("\nPlease enter a valid input\n")
-        elif any(not char.isalnum() for char in name):
-            print("\n** Please enter a valid input **\n")
+        elif this_hour < 12:
+            print(f"\nGood morning {name}, welcome to your shopping")
+            print("=--------------------------------------------------------=")
+            input("\n<<< Press Enter to access menu:>>>\n")
+        elif 12 <= this_hour < 18:
+            print(f"\nGood afternoon {name}, welcome to your shopping cart")
+            print("=--------------------------------------------------------=")
+            input("\n<<< Press Enter to access menu:>>>\n")
             continue
         else:
-            print(f"\nHello {name}, welcome to your shopping cart v1.0")
-            print("=-----------------------------------------------=")
+            print(f"\nGood evening {name}, welcome to your shopping cart")
+            print("=--------------------------------------------------------=")
             input("\n<<< Press Enter to access menu:>>>\n")
             break
 
@@ -91,11 +99,11 @@ def add_item():
         # checks to validate correct user input
         if any(char.isdigit() for char in item_add):
             print("\nPlease enter  words not numbers\n")
-        elif any(not char.isalnum() for char in item_add):
-            print("\nPlease enter a valid input\n")
-            continue
+        # elif any(not char.isalnum() for char in item_add):
+        #     print("\nPlease enter a valid input\n")
         elif not item_add:
             print("\nPlease enter a valid input\n")
+            continue
         elif item_add + "\n" in my_cart:
             print(f"\n{item_add} was previously added to cart""\n")
             input("\nPress enter to continue\n")
@@ -156,9 +164,9 @@ def find_item():
         # checks to validate correct user input
         if any(char.isdigit() for char in search_item):
             print("\n### Please input letters not numbers ###\n")
-        elif any(not char.isalnum() for char in search_item):
-            print("\n### Enter a valid input ###\n")
-            continue
+        # elif any(not char.isalnum() for char in search_item):
+        #     print("\n### Enter a valid input ###\n")
+        #   continue
         elif search_item + '\n' in my_cart:
             print(f"\n \"{search_item}\" is in your cart\n")
             input("\nPress Enter to continue:\n")
@@ -182,9 +190,9 @@ def delete_item():
         # checks to validate correct user input
         if any(char.isdigit() for char in to_delete):
             print("\n### Please input letters not numbers ###\n")
-        elif any(not char.isalnum() for char in to_delete):
-            print("\n### Enter a valid input ###\n")
-            continue
+        # elif any(not char.isalnum() for char in to_delete):
+        #     print("\n### Enter a valid input ###\n")
+        #     continue
         elif not to_delete:
             print("\nEnter a valid input\n")
         elif to_delete + '\n' not in my_cart:
@@ -218,10 +226,21 @@ def empty_cart():
 
 # This Exit function terminates  the program execution
 def exit_app():
+    exit_hour = int(datetime.now().strftime('%H'))
     choice = input("\nPress y to exit or n to re-start program\n")
     if choice == "y":
-        print("\nThank you for your time =:)\n")
-        sys.exit(0)
+        if exit_hour < 12:
+            print("\nThank you for your time =:)\n")
+            print("\nEnjoy the rest of your morning\n")
+            sys.exit(0)
+        elif 12 <= exit_hour < 18:
+            print("\nThank you for your time =:)\n")
+            print("\nEnjoy the rest of your day\n")
+            sys.exit(0)
+        else:
+            print("\nThank you for your time =:)\n")
+            print("\nEnjoy the rest of your evening\n")
+            sys.exit(0)
     elif choice == "n":
         greeting()
     else:

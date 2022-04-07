@@ -31,10 +31,10 @@ def greeting():
 # This is the main menu where user can pick a selection to execute a task
 def option_menu():
     while True:
-        # user can select option between 1 to 6
+        # user can select option between 1 to 7
         print("%%%%%% OPTION MENU %%%%%%")
         print("  ")
-        print("\nPress 1 - 6 to select option")
+        print("\nPress 1 - 7 to select option")
         print("  ")
         print("1: Add item")
         print("2: View cart")
@@ -74,7 +74,7 @@ def option_menu():
             print("=======================""\n")
             exit_app()
         elif not option:
-            print("** Invalid input please enter 1-6 **")
+            print("** Invalid input please enter 1-7 **")
             input("\nPress enter to return to Menu\n")
         else:
             print("** Invalid input please press enter")

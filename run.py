@@ -33,7 +33,7 @@ def greeting():
             print(f"\nGood evening {name}, welcome to your shopping list")
             print("=----------------------------------------------------=")
             input("\n<<< Press Enter to access menu:>>>\n")
-            break
+        break
 
 
 # This is the main menu where user can pick a selection to execute a task
@@ -124,7 +124,7 @@ def view_list():
                 print(f"   item {i}: {item}", end="")
             input("\nPress Enter to continue\n")
     else:
-        print("\nlist is empty, Try adding an item\n")
+        print("\nlist is empty, try adding an item\n")
         input("\nPress enter to return to Menu\n")
 
 

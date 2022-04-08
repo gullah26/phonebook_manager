@@ -1,9 +1,10 @@
 # Shopping List Manager #
 
-* The shopping cart manager is an direct equivalent to the popular shopping list manager program, It is a kind of shopping bot that allows the user input and manipulation of data according to the user choices and the shopping bot outputs a result based on user choices and input.
+* The shopping list manager is an application like a  shopping bot that allows the user to input data and manipulate it according to the user choices and the shopping bot outputs a result based on user choices and input.
 
-* The aim of this program is to help user have a proper planning with grocery shopping, by having a grocery list is beneficial to a user in a lot of ways.
-    First, a user will likely make an improptu decision to impulse buy a product that was never in the plan, this kind of uncontrolled urge will definitly impact the user financially, which the ripple effect can spread all the way to incur debt , which can eventually be a detriment to a once healthy credit score. However, having a proper planning of the items you want to buy could come in handy as it will help in avoiding over spending, and impulse buying by helping user to focus on what is really needed.
+* The aim of this program is to help user have a proper planning with shopping list record,
+ this  shopping list app is beneficial to users in a lot of ways. 
+ First, a user will likely make an improptu decision to impulse buy a product that was never in the plan, this kind of uncontrolled urge will definitly impact the user financially, which the ripple effect can spread all the way to incur debt , it can also be a detriment to a once healthy credit score. However, having a proper planning of the items you want to buy could come in handy as it will help in avoiding over spending, and impulse buying by helping user to focus on what is really needed.
 
 * Secondly, the shopping list program saves user time and energy, not having a list of what to buy at the store makings shopping a headache and time consuming as wider product choices can be a distraction which can be overwhelming sometimes, but if you already have the choice of items you which to buy makes shopping very easy and less time consuming. In the same vein, having a shopping list reduces waste in the sense that when you buy things you do not really need immediatly it most times end up in the trash.
 
@@ -11,21 +12,26 @@
 
 ![title and logo screen](/images/title.png)
 
+
+
 ## Features
 _______________________________
 
-### Greeting
+## Greeting
 
 *  The first thing a user sees when the program is been executed is a display of the program title with a design.
 
 * It asks the user to input a name which is then displayed as a greeting.
 
 
-![greeting](/images/greetings.png)
+![morning](/images/greetings2.png)
+
+![evening](/images/greetings.png)
 
 
-### Option Menu 
-* This is a section the shows  to the user available option to selct from. 
+
+## Option Menu 
+* This is a section that shows  to the user  the options available to choose from. 
 
 * This option ranges from 1 to 7.
 
@@ -33,69 +39,87 @@ _______________________________
 	
 
 
+
+
 ![Option Menu](/images/optionmenu.png)
 
-#### Option 1: Add item to list.
+
+
+## Option 1: Add item to list.
 
 * This option allow user to add items to the list.
 * It also tells the user if an item has already been added to avoid repetition.
 
 
-![object selection section](assets/images/optionarea.png)
-![object selection section](assets/images/optionarea.png)
 
-#### Option 2: View List
+
+![Option Menu 1a](/images/option1a.png)
+
+![Option Menu 1b](/images/option1b.png)
+
+
+
+## Option 2: View List
 
 * This option displays the content of the list. 
 
-* If nothing was previously added it displays "List is empty, try adding adding an item".
-
-![Footer section](assets/images/gameplay.png)
-![Footer section](assets/images/gameplay.png)
+* If nothing was previously added,  it displays "List is empty, try adding adding an item".
 
 
-#### Option 3: Total number of items in the list
+
+![Option Menu 2a](/images/option2a.png)
+
+![Option Menu 2b](/images/option2b.png)
+
+
+
+## Option 3: Total number of items in the list
 
 * This option displays the total number of items on the list. 
 
 * Displays "0" if the list is empty
 
 
-![score section](assets/images/playerscore.png)
+![Option Menu 3](/images/option3.png)
 
-#### Option 4: Find items in the list
+
+## Option 4: Find items in the list
 	
-* The find item in the list option searches the list for a user specified item name, which then search and returns a message if the item is found or not 
+* The find item in the list option searches the list for a user specified item name, which then search and return a message if the item is found or not 
 
 
-![Footer section](assets/images/rules.png)
-![Footer section](assets/images/rules.png)
+![Option Menu 4a](/images/option4a.png)
+
+![Option Menu 4b](/images/option4b.png)
 
 
-#### Option 5: Delete items from the list
+## Option 5: Delete items from the list
 
 * The delete item from the list option also searches the list for a user specified item name, which then search and delete the item if found on the list or not.
 
 
-![Footer section](assets/images/rules.png)
-![Footer section](assets/images/rules.png)
+![Option Menu 5a](/images/option5a.png)
+
+![Option Menu 5b](/images/option5b.png)
 
 
-#### Option 6: Empty  the list
+
+## Option 6: Empty  the list
 
 * This erase every content of the list and return it back to an empty list.
 * It prints a message based on if the list is already empty or not.
 
-![Footer section](assets/images/rules.png)
-![Footer section](assets/images/rules.png)
+![Option Menu 6a](/images/option6a.png)
 
-#### Option 7: Exit program
+![Option Menu 6b](/images/option6b.png)
+
+## Option 7: Exit program
 
 * This function allows user to exit the program.
 * It gives the user an option to chose either to exit or run the program again from the beginning.
 * It also print a thank you message to the user based on the time of the day.
 
-![Footer section](assets/images/rules.png)
+![Option Menu 7](/images/option7a.png)
 
 ## Testing
 
@@ -108,10 +132,10 @@ _______________________________
 ![Footer section](/images/pep8.png)
 ## Tools used
 
-### Language
+## Language
 * Python
 
-### Other program used: 
+## Other program used: 
 * Gitpod:
     * Gitpod: A versatile IDE used to code the program [Gitpod](https://www.gitpod.io/ "gitpod")
 
@@ -173,17 +197,23 @@ _______________________________
 * Click on view app button to run the application.
 
 
-* The Live link to the deployed program is  [Shopping list](https://gullah26.github.io/Rock_Paper_Scissors/ "rock paper scissors").
+* The Live link to the deployed program on Heroku [Shopping list](https://https://shopping-list-v01.herokuapp.com/ "shopping list manager").
+
+* The github link is  [Shopping list](https://github.com/gullah26/shopping_list "shopping list manager").
 
 ## Credits
 
 * Content
 
-	* The part of the code to make the function check winner was from  [sebhastian](https://sebhastian.com/rock-paper-scissors-javascript/ "sebhastian")
+	* Insipiration was drawn  from  [Geek tutorials](https://www.youtube.com/watch?v=9-jazqksAnA "geek tutorials")
 
-	* The inspiration to start  the project is from  Code Institute Portfolio Project Scope.
+    * Insipiration to structure the flow  [Richard](https://gist.github.com/richardbwest/d0365ebb89e89e7290e7cdb9cbc95530 "Richard")
+
+    * Some of the code to validate user data input was from [ Mrst12 ](https://github.com/Mrst12/shop-app#programmes-used "Mrst12")
+
+    The aim of the app inspiration was from [ Positive lending solution ](https://www.positivelendingsolutions.com.au/resources/information-centre/8-reasons-to-make-a-shopping-list/ "positive-lending-solution")
 
 
-## Media
+    ## Acknoledgements
 
-* The Images used on this game  was taken from [png set](https://pngset.com/download-free-png-yiceg "png set").
+    *  Codeinstitute , the slack community, and Codeinstitue mentor support team

@@ -1,7 +1,7 @@
 import sys
 from datetime import datetime
 
-# An empty list that will contain user input
+# An empty list that will contain user input .
 my_list = []
 new_list = []
 
